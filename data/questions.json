@@ -37583,5 +37583,767 @@
       "STAR"
     ],
     "pitfall": "简历堆项目名，面试讲不出自己改过哪一行。"
+  },
+  {
+    "id": "UUV-161",
+    "domain": "水下机器人",
+    "topic": "U0 的底座模型",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "U0 水下 VLA 是在哪个底座模型上微调的？",
+    "options": {
+      "A": "GR00T N1.5-3B",
+      "B": "Octo",
+      "C": "RDT",
+      "D": "ACT"
+    },
+    "correct_answer": "A",
+    "explanation": "U0 基于 NVIDIA GR00T N1.5-3B，保留 Eagle 视觉语言主干和 Flowmatching Action Head，只做水下本体适配与微调。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "GR00T",
+      "水下VLA"
+    ],
+    "pitfall": "不要把 U0 当成从零训练的新 VLA，它的核心是本体适配。"
+  },
+  {
+    "id": "UUV-162",
+    "domain": "水下机器人",
+    "topic": "U0 的 PWM 状态",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "U0 的 29 维 state 中，8 路 PWM 表示什么？",
+    "options": {
+      "A": "相机曝光",
+      "B": "推进器占空比",
+      "C": "关节力矩",
+      "D": "深度计读数"
+    },
+    "correct_answer": "B",
+    "explanation": "U0 是 5 关节机械臂 + 8 路推进器；pwm 索引 5–13，共 8 维，直接对应推进器占空比。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "PWM",
+      "动作空间"
+    ]
+  },
+  {
+    "id": "UUV-163",
+    "domain": "水下机器人",
+    "topic": "U0 默认微调范围",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "U0 默认微调策略是？",
+    "options": {
+      "A": "全参微调 LLM 和视觉塔",
+      "B": "只训视觉塔",
+      "C": "冻结 LLM/视觉，训 projector 和动作头",
+      "D": "只训 LLM"
+    },
+    "correct_answer": "C",
+    "explanation": "gr00t_finetune.py 默认 tune_llm=False、tune_visual=False、tune_projector=True、tune_diffusion_model=True，属于动作头/适配层微调。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "微调",
+      "PEFT"
+    ]
+  },
+  {
+    "id": "UUV-164",
+    "domain": "水下机器人",
+    "topic": "U0 推理服务默认端口",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "U0 推理服务默认使用 ZMQ，端口是？",
+    "options": {
+      "A": "8000",
+      "B": "8123",
+      "C": "5000",
+      "D": "5555"
+    },
+    "correct_answer": "D",
+    "explanation": "inference_service_u0.py 默认 ZMQ server，端口 5555；加 --http-server 才走 HTTP，默认 8000。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "部署",
+      "ZMQ"
+    ]
+  },
+  {
+    "id": "UUV-165",
+    "domain": "水下机器人",
+    "topic": "U0 训练数据集",
+    "type": "fill_in_blank",
+    "difficulty": "easy",
+    "question": "U0 微调使用的自采水下数据集叫 ____。",
+    "options": null,
+    "correct_answer": "USIM",
+    "explanation": "Hugging Face 数据集 Vincent2025hello/usim；仓库 demo_data 只是小样本。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "USIM",
+      "数据集"
+    ]
+  },
+  {
+    "id": "UUV-166",
+    "domain": "水下机器人",
+    "topic": "U0 新本体标签",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "新本体接入 GR00T 时，默认使用的 embodiment_tag 是 ____。",
+    "options": null,
+    "correct_answer": "new_embodiment",
+    "explanation": "EMBODIMENT_TAG_MAPPING 里 new_embodiment 映射到动作专家投影索引 31；U0 也用它。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "embodiment tag",
+      "跨本体"
+    ]
+  },
+  {
+    "id": "UUV-167",
+    "domain": "水下机器人",
+    "topic": "U0 动作空间组成",
+    "type": "concept",
+    "difficulty": "easy",
+    "question": "判断：U0 的动作空间由 5 维关节角和 8 维推进器 PWM 组成。",
+    "options": null,
+    "correct_answer": "true",
+    "explanation": "modality 配置里 action 是 joint_pos 0–5 与 pwm 5–13，正好 13 维。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "动作空间"
+    ]
+  },
+  {
+    "id": "UUV-168",
+    "domain": "水下机器人",
+    "topic": "U0 是否输出末端位姿",
+    "type": "concept",
+    "difficulty": "easy",
+    "question": "判断：U0 直接输出末端位姿和夹爪开合，不输出关节角。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "U0 输出关节角 + PWM，不走末端位姿+夹爪的桌面操作接口；这是水下作业本体的差异。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "动作表示"
+    ]
+  },
+  {
+    "id": "UUV-169",
+    "domain": "水下机器人",
+    "topic": "U0 冻结 VLM 的原因",
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "为什么 U0 默认冻结 LLM 和视觉塔，只训 projector 与动作头？",
+    "options": null,
+    "correct_answer": "水下数据规模远小于通用图文数据，全参微调容易过拟合和灾难性遗忘；冻结 VLM 可保留通用语义与视觉能力，projector 负责把水下本体状态映射进主干，动作头负责学水下动作分布。这样显存和训练成本更低，也更适合单本体快速适配。",
+    "explanation": "从数据量、灾难性遗忘、算力、本体适配四个角度答。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "微调",
+      "灾难性遗忘"
+    ]
+  },
+  {
+    "id": "UUV-170",
+    "domain": "水下机器人",
+    "topic": "U0 换本体适配流程",
+    "type": "written",
+    "difficulty": "hard",
+    "question": "把 U0 迁移到另一台水下 ROV，给出从模态映射到部署的完整步骤。",
+    "options": null,
+    "correct_answer": "1）盘点新本体：关节数、推进器数、DVL/IMU/压力计维度；2）重写 modality.json，给 state/action/video/annotation 分配连续索引，保证 start/end 不重叠；3）选 embodiment_tag=new_embodiment，或新增 tag 并注册投影索引；4）采集 LeRobot 格式数据，统一频率、归一化、缺失模态填充；5）先冻结 LLM/视觉，训 projector+动作头，数据足够再解冻或上 LoRA；6）用 per-trajectory MSE 和真机成功率评估；7）部署走 ZMQ/HTTP，动作侧加关节限位、PWM 饱和、超时降级到悬停；8）做水池/浅水渐进测试，记录失败回流。",
+    "explanation": "按「本体盘点→模态映射→标签→数据→微调→评估→部署→安全」顺序答。",
+    "source": "memory/lerobot-learning/补充-41-U0水下VLA精读.md",
+    "tags": [
+      "U0",
+      "系统设计",
+      "迁移"
+    ]
+  },
+  {
+    "id": "UUV-171",
+    "domain": "水下机器人",
+    "topic": "MarineGym Hover 并行环境数",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "MarineGym 的 Hover 任务默认并行多少个环境？",
+    "options": {
+      "A": "16",
+      "B": "64",
+      "C": "128",
+      "D": "256"
+    },
+    "correct_answer": "B",
+    "explanation": "cfg/task/Hover.yaml: env.num_envs=64，env_spacing=6，max_episode_length=200。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "并行环境",
+      "配置"
+    ]
+  },
+  {
+    "id": "UUV-172",
+    "domain": "水下机器人",
+    "topic": "MarineGym Track 回合长度",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "MarineGym 的 Track 任务默认回合长度是多少步？",
+    "options": {
+      "A": "600",
+      "B": "200",
+      "C": "400",
+      "D": "1000"
+    },
+    "correct_answer": "A",
+    "explanation": "Track.yaml: max_episode_length=600，num_envs=16，future_traj_steps=4。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "Track",
+      "配置"
+    ]
+  },
+  {
+    "id": "UUV-173",
+    "domain": "水下机器人",
+    "topic": "MarineGym 未来轨迹窗口",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "Track.yaml 里 future_traj_steps: 4 的作用是？",
+    "options": {
+      "A": "并行环境数",
+      "B": "控制频率",
+      "C": "给策略未来 4 步参考轨迹",
+      "D": "回放池大小"
+    },
+    "correct_answer": "C",
+    "explanation": "future_traj_steps 把未来 4 步参考轨迹放进观测，相当于前馈窗口，帮助策略提前转弯/跟踪。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "Track",
+      "前馈"
+    ]
+  },
+  {
+    "id": "UUV-174",
+    "domain": "水下机器人",
+    "topic": "MarineGym 随机化开关",
+    "type": "choice",
+    "difficulty": "hard",
+    "question": "MarineGym 默认配置中，域随机化在训练和评估阶段的状态是？",
+    "options": {
+      "A": "训练开、评估开",
+      "B": "训练关、评估关",
+      "C": "训练开、评估关",
+      "D": "训练关、评估开"
+    },
+    "correct_answer": "D",
+    "explanation": "randomization.yaml 与 disturbances.yaml 都是 train.enable=False、evaluate.enable=True；默认先学干净环境，评估才加随机化和流/负载。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "域随机化",
+      "sim2real"
+    ],
+    "pitfall": "容易想当然认为训练一定开随机化；这份配置恰好相反。"
+  },
+  {
+    "id": "UUV-175",
+    "domain": "水下机器人",
+    "topic": "MarineGym 五个基准任务",
+    "type": "fill_in_blank",
+    "difficulty": "easy",
+    "question": "MarineGym 的五个基准任务是悬停、圆周跟踪、螺旋跟踪、双纽线跟踪和 ____。",
+    "options": null,
+    "correct_answer": "着陆（Landing）",
+    "explanation": "Hover、Circle、Helical、Lemniscate、Landing；前四个由 Hover/Track 配置覆盖，Landing 单独配置。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "基准任务"
+    ]
+  },
+  {
+    "id": "UUV-176",
+    "domain": "水下机器人",
+    "topic": "MarineGym 推力奖励权重",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "Hover.yaml 中 reward_effort_weight 的默认值是 ____。",
+    "options": null,
+    "correct_answer": "0.1",
+    "explanation": "奖励 = 0.5/(1+(scale·distance)^2) + 0.1·exp(-effort) + 0·动作平滑；effort 项鼓励省推力。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "奖励函数"
+    ]
+  },
+  {
+    "id": "UUV-177",
+    "domain": "水下机器人",
+    "topic": "MarineGym Track 机器人",
+    "type": "concept",
+    "difficulty": "medium",
+    "question": "判断：MarineGym 的 Track 任务使用 iAUV，并把 controller 设为 null，走端到端 RL。",
+    "options": null,
+    "correct_answer": "true",
+    "explanation": "Track.yaml: drone_model.name=iAUV，controller=null；Hover/Landing 仍用 LeePositionController。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "iAUV",
+      "端到端"
+    ]
+  },
+  {
+    "id": "UUV-178",
+    "domain": "水下机器人",
+    "topic": "MarineGym 训练扰动",
+    "type": "concept",
+    "difficulty": "medium",
+    "question": "判断：MarineGym 默认训练时就开启流扰动和负载扰动。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "disturbances.yaml 的 train 段 enable_flow/enable_payload 都是 false，evaluate 段才是 true。",
+    "source": "memory/lerobot-learning/补充-42-MarineGym源码精读.md",
+    "tags": [
+      "MarineGym",
+      "扰动",
+      "训练配置"
+    ]
+  },
+  {
+    "id": "UUV-179",
+    "domain": "水下机器人",
+    "topic": "UTracker v2 观测",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "UTracker 的 AUVTracking_v2 观测包含什么？",
+    "options": {
+      "A": "状态 + RGB + 声呐深度图",
+      "B": "只有 6 维状态",
+      "C": "只有 RGB",
+      "D": "点云 + 触觉"
+    },
+    "correct_answer": "A",
+    "explanation": "v0 是 Box(6)；v1 加 3×224×224 RGB；v2 再加 1×128×128 sonar。",
+    "source": "memory/lerobot-learning/补充-43-UTracker水下视觉跟踪精读.md",
+    "tags": [
+      "UTracker",
+      "多模态",
+      "声呐"
+    ]
+  },
+  {
+    "id": "UUV-180",
+    "domain": "水下机器人",
+    "topic": "UTracker 协方差奖励",
+    "type": "choice",
+    "difficulty": "hard",
+    "question": "UTracker 的奖励核心为什么用目标信念协方差而不是直接距离？",
+    "options": {
+      "A": "距离太大",
+      "B": "协方差下降代表信息增益，目标位置不确定",
+      "C": "协方差计算更快",
+      "D": "距离不可归一化"
+    },
+    "correct_answer": "B",
+    "explanation": "目标位置不可直接观测，det(cov) 表示不确定性体积；奖励其下降等于奖励主动感知，而不是盲目追最后已知位置。",
+    "source": "memory/lerobot-learning/补充-43-UTracker水下视觉跟踪精读.md",
+    "tags": [
+      "UTracker",
+      "奖励函数",
+      "主动感知"
+    ]
+  },
+  {
+    "id": "UUV-181",
+    "domain": "水下机器人",
+    "topic": "UTracker PID 动作",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "UTracker 用 PID 控制器时，动作空间是什么？",
+    "options": {
+      "A": "3 维 waypoint [r, θ, γ]",
+      "B": "4 维推力",
+      "C": "2 维 [v, ω]",
+      "D": "7 个离散动作"
+    },
+    "correct_answer": "C",
+    "explanation": "PID 动作是归一化速度 [v, ω]；LQR 动作是 waypoint [r, θ, γ]，3 维。",
+    "source": "memory/lerobot-learning/补充-43-UTracker水下视觉跟踪精读.md",
+    "tags": [
+      "UTracker",
+      "PID",
+      "动作空间"
+    ]
+  },
+  {
+    "id": "UUV-182",
+    "domain": "水下机器人",
+    "topic": "UTracker 仿真器版本",
+    "type": "fill_in_blank",
+    "difficulty": "easy",
+    "question": "UTracker 的环境基于水下仿真器 ____ 2.2.2。",
+    "options": null,
+    "correct_answer": "HoloOcean",
+    "explanation": "README 明确支持 HoloOcean 2.2.2；场景配置文件放在 configs/holoocean。",
+    "source": "memory/lerobot-learning/补充-43-UTracker水下视觉跟踪精读.md",
+    "tags": [
+      "UTracker",
+      "HoloOcean",
+      "仿真"
+    ]
+  },
+  {
+    "id": "UUV-183",
+    "domain": "水下机器人",
+    "topic": "UTracker 奖励终止阈值",
+    "type": "fill_in_blank",
+    "difficulty": "hard",
+    "question": "UTracker 中，连续 100 步平均奖励低于 ____ 时会提前终止回合。",
+    "options": null,
+    "correct_answer": "-3.5",
+    "explanation": "world_auv_v0.py 用 deque(maxlen=100) 统计平均奖励，avg_reward < -3.5 则 done_by_reward=True。",
+    "source": "memory/lerobot-learning/补充-43-UTracker水下视觉跟踪精读.md",
+    "tags": [
+      "UTracker",
+      "终止条件",
+      "奖励"
+    ]
+  },
+  {
+    "id": "UUV-184",
+    "domain": "水下机器人",
+    "topic": "UTracker 三档观测",
+    "type": "concept",
+    "difficulty": "easy",
+    "question": "判断：UTracker 的 v1 在状态之外加入 RGB，v2 再加入声呐深度图。",
+    "options": null,
+    "correct_answer": "true",
+    "explanation": "v1: Dict(state, image 3×224×224)；v2: Dict(state, image, sonar 1×128×128)。",
+    "source": "memory/lerobot-learning/补充-43-UTracker水下视觉跟踪精读.md",
+    "tags": [
+      "UTracker",
+      "观测空间"
+    ]
+  },
+  {
+    "id": "UUV-185",
+    "domain": "水下机器人",
+    "topic": "UTracker 主动感知奖励",
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "解释 UTracker 为什么把「目标信念协方差」作为奖励核心，而不是只奖励靠近目标。",
+    "options": null,
+    "correct_answer": "水下目标位置通常不能直接观测，只能通过带噪测量维护信念分布。协方差行列式表示目标位置的不确定性体积，减小它意味着获得信息、缩小搜索范围。只奖励距离会鼓励策略冲向最后已知位置，目标一旦机动就会跟丢；奖励协方差下降则鼓励主动调整视角/航向去观测，属于主动感知。再配合动作平滑和每步惩罚，避免原地转圈。",
+    "explanation": "关键词：POMDP、信念分布、信息增益、主动感知、目标机动。",
+    "source": "memory/lerobot-learning/补充-43-UTracker水下视觉跟踪精读.md",
+    "tags": [
+      "UTracker",
+      "主动感知",
+      "POMDP"
+    ]
+  },
+  {
+    "id": "UUV-186",
+    "domain": "水下机器人",
+    "topic": "BlueROV2 Gym 动作维度",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "BlueROV2 Gym 的动作空间是几维连续量？",
+    "options": {
+      "A": "2",
+      "B": "7",
+      "C": "13",
+      "D": "4"
+    },
+    "correct_answer": "D",
+    "explanation": "动作是 [前后推力, 左右推力, 升沉推力, 偏航力矩]，Box(-1,1,(4,))。",
+    "source": "memory/lerobot-learning/补充-44-BlueROV2Gym精读.md",
+    "tags": [
+      "BlueROV2 Gym",
+      "动作空间"
+    ]
+  },
+  {
+    "id": "UUV-187",
+    "domain": "水下机器人",
+    "topic": "BlueROV2 Gym 观测维度",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "BlueROV2 Gym 的观测字典包含多少个键？",
+    "options": {
+      "A": "4",
+      "B": "6",
+      "C": "29",
+      "D": "8"
+    },
+    "correct_answer": "D",
+    "explanation": "x/y/z/theta/vx/vy/vz/omega 共 8 个 Box(1)。",
+    "source": "memory/lerobot-learning/补充-44-BlueROV2Gym精读.md",
+    "tags": [
+      "BlueROV2 Gym",
+      "观测空间"
+    ]
+  },
+  {
+    "id": "UUV-188",
+    "domain": "水下机器人",
+    "topic": "BlueROV2 Gym 奖励权重",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "BlueROV2 Gym 默认奖励中，位置误差、速度、朝向误差的权重分别是？",
+    "options": {
+      "A": "1.0 / 0.1 / 0.5",
+      "B": "1.0 / 1.0 / 1.0",
+      "C": "0.5 / 0.1 / 0.5",
+      "D": "1.0 / 0.5 / 0.1"
+    },
+    "correct_answer": "A",
+    "explanation": "rewards.py: reward = -(1.0·位置误差 + 0.1·速度 + 0.5·|theta|)。",
+    "source": "memory/lerobot-learning/补充-44-BlueROV2Gym精读.md",
+    "tags": [
+      "BlueROV2 Gym",
+      "奖励函数"
+    ]
+  },
+  {
+    "id": "UUV-189",
+    "domain": "水下机器人",
+    "topic": "BlueROV2 Gym 时间步长",
+    "type": "fill_in_blank",
+    "difficulty": "easy",
+    "question": "BlueROV2 Gym 的仿真时间步长 dt 是 ____ 秒（10 Hz）。",
+    "options": null,
+    "correct_answer": "0.1",
+    "explanation": "dynamics.py 与 env 都设 dt=0.1；控制频率 10 Hz。",
+    "source": "memory/lerobot-learning/补充-44-BlueROV2Gym精读.md",
+    "tags": [
+      "BlueROV2 Gym",
+      "控制频率"
+    ]
+  },
+  {
+    "id": "UUV-190",
+    "domain": "水下机器人",
+    "topic": "BlueROV2 Gym 自由度",
+    "type": "concept",
+    "difficulty": "easy",
+    "question": "判断：BlueROV2 Gym 是 6 自由度模型，包含横滚和俯仰。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "它只建模 x/y/z/yaw 四个自由度，没有横滚/俯仰动力学。",
+    "source": "memory/lerobot-learning/补充-44-BlueROV2Gym精读.md",
+    "tags": [
+      "BlueROV2 Gym",
+      "自由度"
+    ]
+  },
+  {
+    "id": "UUV-191",
+    "domain": "水下机器人",
+    "topic": "MarineGym 与 BlueROV2 Gym 选型",
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "MarineGym 和 BlueROV2 Gym 都做水下 RL，什么时候选哪个？",
+    "options": null,
+    "correct_answer": "要大规模并行、多任务、域随机化、流/负载扰动和高保真水动力，选 MarineGym；它基于 Isaac Sim + OmniDrones，吞吐可到 10⁷ 步/秒，但安装重、依赖 GPU。要快速验证算法、教学、读代码或低算力原型，选 BlueROV2 Gym；它只有 NumPy/SciPy/Meshcat/SB3，4 自由度、无碰撞/海流/视觉，sim2real 不足但启动快、可读性强。",
+    "explanation": "按吞吐、保真、依赖、任务覆盖四个维度对比。",
+    "source": "memory/lerobot-learning/补充-46-水下具身智能项目对比与选型.md",
+    "tags": [
+      "选型",
+      "MarineGym",
+      "BlueROV2 Gym"
+    ]
+  },
+  {
+    "id": "UUV-192",
+    "domain": "水下机器人",
+    "topic": "FCRN 深度图分辨率",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "FCRN 输出的深度图分辨率是？",
+    "options": {
+      "A": "228×304",
+      "B": "224×224",
+      "C": "640×480",
+      "D": "128×128"
+    },
+    "correct_answer": "A",
+    "explanation": "fcrn.py 最后 Upsample 到 (228, 304)，输入是单目 RGB。",
+    "source": "memory/lerobot-learning/补充-45-水下避障FCRN与DDDQN精读.md",
+    "tags": [
+      "FCRN",
+      "深度估计",
+      "分辨率"
+    ]
+  },
+  {
+    "id": "UUV-193",
+    "domain": "水下机器人",
+    "topic": "DDDQN 动作数",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "DDDQN 在水下避障项目里输出多少个离散动作？",
+    "options": {
+      "A": "4",
+      "B": "7",
+      "C": "13",
+      "D": "2"
+    },
+    "correct_answer": "B",
+    "explanation": "ACTIONS=7：两档前进速度 + 五档偏航角速度（+30°/+15°/0/-15°/-30°）。",
+    "source": "memory/lerobot-learning/补充-45-水下避障FCRN与DDDQN精读.md",
+    "tags": [
+      "DDDQN",
+      "动作空间",
+      "避障"
+    ]
+  },
+  {
+    "id": "UUV-194",
+    "domain": "水下机器人",
+    "topic": "水下合成红光衰减",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "水下图像合成中，哪个通道的衰减系数绝对值最大？",
+    "options": {
+      "A": "蓝光 -0.025",
+      "B": "绿光 -0.060",
+      "C": "红光 -0.25",
+      "D": "红外 -0.5"
+    },
+    "correct_answer": "C",
+    "explanation": "create_underwater.m: Red=-0.25, Green=-0.060, Blue=-0.025；红光衰减最快，所以水下图像偏蓝绿。",
+    "source": "memory/lerobot-learning/补充-45-水下避障FCRN与DDDQN精读.md",
+    "tags": [
+      "水下图像",
+      "衰减",
+      "数据增强"
+    ]
+  },
+  {
+    "id": "UUV-195",
+    "domain": "水下机器人",
+    "topic": "单波束声呐触发距离",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "实机流程中，单波束声呐检测到前方障碍距离小于 ____ 米时触发神经网络避障。",
+    "options": null,
+    "correct_answer": "0.8",
+    "explanation": "README 的实机流程用 0.8 m 触发；仿真奖励里的阈值是 0.9 m，留了 0.1 m 安全余量。",
+    "source": "memory/lerobot-learning/补充-45-水下避障FCRN与DDDQN精读.md",
+    "tags": [
+      "声呐",
+      "避障",
+      "实机"
+    ]
+  },
+  {
+    "id": "UUV-196",
+    "domain": "水下机器人",
+    "topic": "DDDQN 对偶结构",
+    "type": "concept",
+    "difficulty": "medium",
+    "question": "判断：DDDQN 使用 Dueling 结构，输出 Q = V + A - mean(A)。",
+    "options": null,
+    "correct_answer": "true",
+    "explanation": "网络分优势头 fc2_adv(7) 和价值头 fc2_val(1)，再组合成 Q；这是 Dueling DQN 的标准写法。",
+    "source": "memory/lerobot-learning/补充-45-水下避障FCRN与DDDQN精读.md",
+    "tags": [
+      "DDDQN",
+      "Dueling",
+      "网络结构"
+    ]
+  },
+  {
+    "id": "UUV-197",
+    "domain": "水下机器人",
+    "topic": "FCRN+DDDQN 组合动机",
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "这个 2018 年的水下避障方案为什么用「FCRN 深度 + DDDQN + 单波束声呐」组合，而不是纯端到端网络？",
+    "options": null,
+    "correct_answer": "当时算力和水下数据都有限，端到端 CNN 到动作难训且不可解释。拆成三步：FCRN 把单目 RGB 变成深度图，提供可解释的中间几何表示；DDDQN 在深度图上做离散决策，样本效率比端到端高；单波束声呐提供正前方绝对距离，作为安全兜底。组合的优点是模块可替换、可调试、成本低；缺点是深度是合成的、动作离散、感知视野窄。",
+    "explanation": "从数据、算力、可解释性、安全兜底四个角度答。",
+    "source": "memory/lerobot-learning/补充-45-水下避障FCRN与DDDQN精读.md",
+    "tags": [
+      "FCRN",
+      "DDDQN",
+      "系统设计"
+    ]
+  },
+  {
+    "id": "UUV-198",
+    "domain": "水下机器人",
+    "topic": "大规模水下 RL 选型",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "要做大规模水下 RL 训练（多任务、域随机化、高吞吐），优先选？",
+    "options": {
+      "A": "U0",
+      "B": "BlueROV2 Gym",
+      "C": "FCRN+DDDQN",
+      "D": "MarineGym"
+    },
+    "correct_answer": "D",
+    "explanation": "MarineGym 是 Isaac Sim + OmniDrones 的并行平台，10⁷ 步/秒，5 个基准任务；其他三个分别是 VLA、轻量环境、经典避障。",
+    "source": "memory/lerobot-learning/补充-46-水下具身智能项目对比与选型.md",
+    "tags": [
+      "选型",
+      "水下RL",
+      "MarineGym"
+    ]
+  },
+  {
+    "id": "UUV-199",
+    "domain": "水下机器人",
+    "topic": "水下机械臂 U0 与 Angler 选型",
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "水下机械臂抓取项目，U0 和 Angler 各适合什么路线？",
+    "options": null,
+    "correct_answer": "U0 是学习型路线：GR00T N1.5 微调，输入 RGB+本体状态，输出关节角+推进器 PWM，适合有演示数据、想做端到端 VLA 的场景。Angler 是传统控制路线：ROS2 UVMS 框架，TPIK 全身控制 + 水动力解析 + ArduSub 集成，适合需要强稳定性、可解释性和实时控制的作业。实际系统可以组合：U0 出高层动作/目标，Angler 做底层全身控制与安全兜底。",
+    "explanation": "按学习型 vs 控制型、数据需求、可解释性、实时性对比。",
+    "source": "memory/lerobot-learning/补充-46-水下具身智能项目对比与选型.md",
+    "tags": [
+      "选型",
+      "U0",
+      "Angler"
+    ]
+  },
+  {
+    "id": "UUV-200",
+    "domain": "水下机器人",
+    "topic": "水下具身系统设计",
+    "type": "written",
+    "difficulty": "hard",
+    "question": "设计一套水下具身智能抓取系统：说明任务、感知、模型、控制、仿真、部署与安全，并解释每个选型理由。",
+    "options": null,
+    "correct_answer": "任务：在 5–20 m 浅水、能见度 3–10 m 的环境里，对已知类别物体做抓取与放置。感知：单目 RGB + 腕部相机 + DVL/IMU/压力计；浑浊时加单波束声呐/前视声呐做近距兜底。模型：U0/GR00T 类 VLA 做语言条件的高层动作，输出关节角+PWM；底层用 Angler/TPIK 做全身控制与推力分配。仿真：先用 MarineGym 训运动/悬停策略，再用 HoloOcean 或真实水池做视觉/抓取验证；域随机化覆盖质量、附加质量、阻尼、推力系数、流和负载。数据：LeRobot 格式采集遥操作演示，统一频率与归一化，失败样本回流。部署：ZMQ/HTTP 边缘推理，动作限幅、PWM 饱和、超时降级到悬停，关键步骤人工确认。安全：急停、深度/姿态边界、推进器故障检测、缆绳拉力监控。评测：仿真成功率 + 水池成功率 + 真机成功率，分任务/分能见度统计。",
+    "explanation": "按「任务→感知→模型→控制→仿真→数据→部署→安全→评测」九段答，每段给选型理由。",
+    "source": "memory/lerobot-learning/补充-46-水下具身智能项目对比与选型.md",
+    "tags": [
+      "系统设计",
+      "水下VLA",
+      "具身智能"
+    ]
   }
 ]

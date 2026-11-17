@@ -29,13 +29,14 @@
 
 ## 三、当前状态（2026-11-17）
 
-- 全库 **1920 题 / 230 个来源**，构建通过。
+- 全库 **1960 题 / 236 个来源**，构建通过。
 - 编号迁移完成：原 DATA-001~020 拆成 DATA-001~020（数据，含补空号）与 DEPLOY-001~012（部署）。
 - 十二个单元全部收官：U1 120、U2 260、U3 160、U4 200、U5 160、U6 180、U7 160、U8 140、U9 140、U10 160、U11 120、U12 120（FRONT-001~120 连续无缺）。
-- 下一批编号：**batch-39**（若继续做项目精读补全，建议先定新前缀与来源清单）。
-- 下一步：全库第一轮完整收官复核（结构、配比、去重、来源、语言五类），再决定是否启动“391 份项目精读补全”。
-- 第一轮复核已完成（2026-11-17）：结构错误 0；答案分布 195/195/193/193；简答 274 题全部 ≥3 句；近重复题干 0 对；180 条缺失 `options` 已补 `null`；构建通过（1920 题 / 230 来源）。
-- Android APK 已完成（2026-11-17）：源码在 `question-bank/APK/`，交付包 `APK/question-bank-v1.0.0.apk`；targetSdk 37（Android 17）、minSdk 26、release v2 签名、约 0.55MB；WebView 加载 assets 内页面与题库，进度存 WebView localStorage，导出/导入走 SAF；已通过构建、签名、权限、R8 桥接保留、APK 资源与打包页面冒烟测试；因本机 BIOS 虚拟化关闭、无真机连接，未完成 Android 运行时实测，手机验收步骤见 `APK/TEST-REPORT.md`。
+- batch-39（U13 水下具身新项目 40 题）已完成：UUV-161~200，source 为 `memory/lerobot-learning/补充-41~46`。新增源码：`u0model-src`、`marinegym-src`、`rl-auv-tracking-src`、`bluerov2-gym-src`、`underwater-obstacle-avoidance-src`、`umi-underwater-src`。
+- 下一批编号：**batch-40**（若继续项目精读补全，先定新前缀与来源清单）。
+- 下一步：可做水下具身第二批（触觉/声呐 VLA、UVMS 操作、真实水池 sim2real），或按原计划补其他项目精读。
+- 第一轮复核已完成（2026-11-17）：结构错误 0；答案分布 195/195/193/193；简答 274 题全部 ≥3 句；近重复题干 0 对；180 条缺失 `options` 已补 `null`；构建通过（1960 题 / 236 来源）。
+- Android APK 已完成（2026-11-17）：源码在 `question-bank/APK/`，交付包 `APK/question-bank-v1.0.0.apk`；targetSdk 37（Android 17）、minSdk 26、release v2 签名、约 0.55MB；WebView 加载 assets 内页面与题库，进度存 WebView localStorage，导出/导入走 SAF；已通过构建、签名、权限、R8 桥接保留、APK 资源与打包页面冒烟测试；因本机 BIOS 虚拟化关闭、无真机连接，未完成 Android 运行时实测，手机验收步骤见 `APK/TEST-REPORT.md`。**APK 自 1.0.0 起冻结，不再随题库更新。**
 - 离线刷题页已升级并完成浏览器验证（2026-11-17）：断点续做、答对自动跳下一题（答错停留）、答题卡跳题（100 题/页）、学习状态筛选、随机顺序、错题本/收藏夹、垃圾箱（软删除+恢复）、可配置模拟考试（题量/刷新恢复，无计时）、背诵展开与字号（50 题/页）、今日作答与连续天数、分题型/分领域掌控度、进度 JSON 导入导出、快捷键。练习、考试、错题本、收藏、背诵、统计六条流程均 PASS，控制台无报错。题库为静态 `questions.js`（约 1.7MB）无数据库；推荐双击 `启动刷题.cmd` 用本地服务固定 8123 端口，进度写 `data/progress.json`；直接双击 index.html 时退回 localStorage。进度写入 300ms 合并，页面隐藏时落盘。
 
 ### 最近复核（batch-20~26，280 题）
