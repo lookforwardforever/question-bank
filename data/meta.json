@@ -1,0 +1,7 @@
+{
+  "title": "项目题库",
+  "domain": "多领域（VLA/控制/RL/水下/世界模型/数据部署/前沿/灵巧手/全身控制/数学与控制理论/模仿学习/Agent）",
+  "batch": "batch-38-u12",
+  "updated": "2026-11-17",
+  "notes": "batch-1~17 共1090题；batch-18/19 U2 VLA 260题；batch-20~23 U6仿真与世界模型180题；batch-24~25 U7灵巧手160题；batch-26~28+32 U8数据工程140题；batch-29~33 U9推理部署140题；batch-34~36 U11 Agent与中间件120题；batch-37~38 U12 前沿50题（SONIC 运动跟踪规模化、踢球虚拟感知、ZEST 跨源配方、AstraBrain 序列运控、ULTRA/OpenHLM/LEGS、WholeBodyWAM/MotionWAM、VioLA、世界模型落地四用法、人形竞速四难、2026 竞争焦点与开源格局、评测边界、VLA 选型三角、STAR 表达），U12 收官120/120；全库1920题、230个来源，十二单元全部达标"
+}

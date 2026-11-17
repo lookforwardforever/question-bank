@@ -1,0 +1,20 @@
+# 个人进度与本地状态
+data/progress.json
+
+# 打包副本
+question-bank.zip
+
+# Android 构建产物
+APK/.gradle/
+APK/build/
+APK/app/build/
+APK/local.properties
+APK/keystore/
+*.jks
+*.keystore
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+*.iml

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">项目题库</string>
+    <string name="splash_sub">离线刷题 · 背诵 · 考试</string>
+</resources>
