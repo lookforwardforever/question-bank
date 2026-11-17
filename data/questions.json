@@ -38345,5 +38345,769 @@
       "水下VLA",
       "具身智能"
     ]
+  },
+  {
+    "id": "FRONT-121",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 会议定位",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "IROS 2026 的举办地和时间是什么？",
+    "options": {
+      "A": "日本东京，2026 年 5 月",
+      "B": "美国匹兹堡，2026 年 9 月 27 日–10 月 1 日",
+      "C": "中国杭州，2026 年 10 月",
+      "D": "德国慕尼黑，2026 年 12 月"
+    },
+    "correct_answer": "B",
+    "explanation": "IROS 2026 在匹兹堡举行，9 月 27 日至 10 月 1 日；奖项报告安排在周一周二，周三午餐公布结果。",
+    "source": "memory/lerobot-learning/补充-47-IROS2026具身智能全景与获奖论文.md",
+    "tags": [
+      "IROS",
+      "会议",
+      "2026"
+    ]
+  },
+  {
+    "id": "FRONT-122",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 最佳论文 LT-Mem",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "IROS 2026 最佳论文 LT-Mem 的核心机制是什么？",
+    "options": {
+      "A": "用 3D Gaussian Splatting 做策略记忆",
+      "B": "用残差强化学习稳定人形载荷",
+      "C": "用易变性感知的时空记忆统一跨会话物体身份与变化历史",
+      "D": "用条件流匹配做机器鱼导航"
+    },
+    "correct_answer": "C",
+    "explanation": "LT-Mem 把多会话 SLAM、确定性证据打分和 volatility-aware 更新策略结合，输出 Live/Delta/Meta 三段记忆，解决跨会话物体身份与历史丢失。",
+    "source": "memory/lerobot-learning/补充-47-IROS2026具身智能全景与获奖论文.md",
+    "tags": [
+      "LT-Mem",
+      "长期记忆",
+      "IROS"
+    ]
+  },
+  {
+    "id": "FRONT-123",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · Tri-Memory 结构",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "LT-Mem 的 Tri-Memory 由哪三部分组成？",
+    "options": {
+      "A": "Live、Delta、Meta",
+      "B": "Short、Mid、Long",
+      "C": "Map、Pose、Object",
+      "D": "Visual、Text、Force"
+    },
+    "correct_answer": "A",
+    "explanation": "Live 存当前状态，Delta 存带时间戳的变化事件，Meta 存变化频率等统计；三者共同支持纵向物体推理。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "LT-Mem",
+      "Tri-Memory",
+      "记忆结构"
+    ]
+  },
+  {
+    "id": "FRONT-124",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 跨会话身份消融",
+    "type": "choice",
+    "difficulty": "hard",
+    "question": "LT-Mem 去掉跨会话重识别后，事件识别 F1 大约降到多少？",
+    "options": {
+      "A": "0.910",
+      "B": "0.615",
+      "C": "0.310",
+      "D": "0.140"
+    },
+    "correct_answer": "D",
+    "explanation": "完整系统 F1 为 0.910；去掉跨会话重识别后降到 0.140，说明身份是记忆的地基，没有身份 Delta 和 Meta 都失去意义。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "LT-Mem",
+      "消融",
+      "跨会话"
+    ]
+  },
+  {
+    "id": "FRONT-125",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · GaussMemory 表示",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "GaussMemory 用哪种表示作为持久几何底座？",
+    "options": {
+      "A": "NeRF",
+      "B": "3D Gaussian Splatting",
+      "C": "Occupancy Grid",
+      "D": "TSDF"
+    },
+    "correct_answer": "B",
+    "explanation": "GaussMemory 用 3D Gaussian Splatting 作为可持续更新的几何底座，并把记忆更新与读取统一成任务驱动的过程。",
+    "source": "memory/lerobot-learning/补充-47-IROS2026具身智能全景与获奖论文.md",
+    "tags": [
+      "GaussMemory",
+      "3DGS",
+      "场景记忆"
+    ]
+  },
+  {
+    "id": "FRONT-126",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 主动记忆",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "GaussMemory 所说的“主动记忆”主要体现在哪里？",
+    "options": {
+      "A": "所有场景元素等权存储",
+      "B": "用固定规则存下所有观测",
+      "C": "任务驱动地学习记什么、多久更新、丢什么",
+      "D": "只保留最新一帧观测"
+    },
+    "correct_answer": "C",
+    "explanation": "它反对被动记录器，把记忆更新和读取统一起来，让任务需求塑造更新策略，端到端学习跟踪、更新和丢弃。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "GaussMemory",
+      "主动记忆",
+      "任务驱动"
+    ]
+  },
+  {
+    "id": "FRONT-127",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · VTAP 自由度",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "VTAP 三指夹爪的总自由度是多少？",
+    "options": {
+      "A": "9",
+      "B": "10",
+      "C": "13",
+      "D": "16"
+    },
+    "correct_answer": "C",
+    "explanation": "三根手指各 4 DOF，加 1 个主动手掌，共 13 DOF；手掌行程 50 mm，兼顾精细操作与工程可控性。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "VTAP",
+      "夹爪",
+      "自由度"
+    ]
+  },
+  {
+    "id": "FRONT-128",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 三指重定向",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "VTAP 如何解决人手五指到三指机构的遥操作映射？",
+    "options": {
+      "A": "分阶段、手势条件化的重定向",
+      "B": "直接把五个指尖 IK 映射到三个指尖",
+      "C": "用随机动作探索",
+      "D": "只采集机器人自身演示"
+    },
+    "correct_answer": "A",
+    "explanation": "VTAP 先识别人手手势，不同手势映射不同手指-手掌协同模式，再做指尖位置和姿态映射，减少 embodiment gap。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "VTAP",
+      "遥操作",
+      "重定向"
+    ]
+  },
+  {
+    "id": "FRONT-129",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · GelSphere 滚动",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "GelSphere 实现全向滚动的关键机械设计是什么？",
+    "options": {
+      "A": "磁悬浮",
+      "B": "凝胶与刚性外壳之间的钢球轴承层",
+      "C": "气浮轴承",
+      "D": "静电吸附"
+    },
+    "correct_answer": "B",
+    "explanation": "钢球在凝胶和刚性外壳之间形成轴承层，让球形凝胶壳可以绕任意轴滚动，从而实现全向表面扫描。",
+    "source": "memory/lerobot-learning/补充-47-IROS2026具身智能全景与获奖论文.md",
+    "tags": [
+      "GelSphere",
+      "触觉",
+      "全向滚动"
+    ]
+  },
+  {
+    "id": "FRONT-130",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · Shallow-π 压缩",
+    "type": "choice",
+    "difficulty": "easy",
+    "question": "Shallow-π 把 Transformer 深度从多少压到多少？",
+    "options": {
+      "A": "24 → 8",
+      "B": "18 → 6",
+      "C": "12 → 4",
+      "D": "32 → 8"
+    },
+    "correct_answer": "B",
+    "explanation": "Shallow-π 同时压缩 VLM 骨干和 flow-based 动作头，从 18 层压到 6 层。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "Shallow-π",
+      "VLA",
+      "蒸馏"
+    ]
+  },
+  {
+    "id": "FRONT-131",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 层跳过失效",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "为什么传统 layer-skipping 方法对 flow-based VLA 效果有限？",
+    "options": {
+      "A": "动作头在每一层都要和 VLM 骨干做 cross-attention",
+      "B": "视觉 token 数量太多",
+      "C": "训练数据太少",
+      "D": "没有残差连接"
+    },
+    "correct_answer": "A",
+    "explanation": "π 系的动作头逐层 cross-attend 到 VLM 骨干，简单跳层会破坏动作生成所需的逐层条件，因此需要动作相关的蒸馏而不是硬跳层。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "Shallow-π",
+      "Flow Matching",
+      "注意力"
+    ]
+  },
+  {
+    "id": "FRONT-132",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · ReST-RL 解耦",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "SteadyTray 的 ReST-RL 如何解耦行走与载荷稳定？",
+    "options": {
+      "A": "完全端到端训练一个大网络",
+      "B": "只用视觉伺服",
+      "C": "只用 MPC 不用学习",
+      "D": "冻结基础行走策略，加残差模块抵消步态扰动"
+    },
+    "correct_answer": "D",
+    "explanation": "基础策略负责稳定行走，残差模块根据机器人和载荷状态输出修正动作；这样不破坏基础步态，又能主动稳定末端托盘。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "SteadyTray",
+      "残差RL",
+      "人形"
+    ]
+  },
+  {
+    "id": "FRONT-133",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · DAWN 去噪",
+    "type": "choice",
+    "difficulty": "hard",
+    "question": "DAWN 训练世界模型时用什么方式获得噪声鲁棒性？",
+    "options": {
+      "A": "部署时加卡尔曼滤波",
+      "B": "只用 RGB 不用深度",
+      "C": "人工标注干净深度",
+      "D": "编码器输入带噪深度，解码器重建干净深度并做对比对齐"
+    },
+    "correct_answer": "D",
+    "explanation": "DAWN 在 RSSM 里制造输入-目标错位，让编码器见脏数据、解码器学干净目标，再用对比学习拉近潜状态；不增加推理开销。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "DAWN",
+      "世界模型",
+      "去噪"
+    ]
+  },
+  {
+    "id": "FRONT-134",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · LATENT 数据",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "LATENT 用来教人形打网球的数据有什么特点？",
+    "options": {
+      "A": "完整、精确的人体网球动作序列",
+      "B": "纯仿真数据",
+      "C": "只包含基本击球动作的不完美人体片段",
+      "D": "互联网视频的完整比赛"
+    },
+    "correct_answer": "C",
+    "explanation": "LATENT 只用捕捉基本击球动作的片段，通过修正与组合学习完整行为；这显著降低了数据采集难度。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "LATENT",
+      "人形",
+      "运动数据"
+    ]
+  },
+  {
+    "id": "FRONT-135",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · Ask-to-Clarify",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "Ask-to-Clarify 相对于传统 VLA 的范式转变是什么？",
+    "options": {
+      "A": "从 Listen-and-Act 转向主动提问消歧后再执行",
+      "B": "只做视觉不做语言",
+      "C": "只做语言不做动作",
+      "D": "只做硬件不改算法"
+    },
+    "correct_answer": "A",
+    "explanation": "它把多轮消歧对话和低层视觉运动控制统一起来，让机器人先识别歧义、向用户提问，再根据反馈生成明确指令并执行。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "Ask-to-Clarify",
+      "具身交互",
+      "VLA"
+    ]
+  },
+  {
+    "id": "FRONT-136",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 接触定位",
+    "type": "choice",
+    "difficulty": "medium",
+    "question": "Contact-Aided Factor-Graph Localization 把什么当作高置信因子？",
+    "options": {
+      "A": "视觉地点识别",
+      "B": "GPS 定位",
+      "C": "磁力计航向",
+      "D": "机械臂与物体的物理接触事件"
+    },
+    "correct_answer": "D",
+    "explanation": "接触事件被建模成高置信因子，等效于不依赖外观识别的隐式回环；在无纹理海底能显著降低漂移。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "水下",
+      "因子图",
+      "接触"
+    ]
+  },
+  {
+    "id": "FRONT-137",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · LT-Mem 更新策略",
+    "type": "concept",
+    "difficulty": "medium",
+    "question": "判断：LT-Mem 对所有物体都采用覆盖式更新，只保留最新状态。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "LT-Mem 根据物体的易变性在 overwrite、hold、multi-hypothesis 之间选择；稳定物体倾向保留，易变物体才更积极更新。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "LT-Mem",
+      "更新策略",
+      "记忆"
+    ]
+  },
+  {
+    "id": "FRONT-138",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · GaussMemory 权重",
+    "type": "concept",
+    "difficulty": "medium",
+    "question": "判断：GaussMemory 认为场景中所有元素都应被同等精度地跟踪和存储。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "GaussMemory 的核心反对点就是“所有元素等权”；它让任务驱动地学习哪些物体精细跟踪、哪些激进更新、哪些丢弃。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "GaussMemory",
+      "任务驱动",
+      "记忆"
+    ]
+  },
+  {
+    "id": "FRONT-139",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · VTAP 仿人手",
+    "type": "concept",
+    "difficulty": "easy",
+    "question": "判断：VTAP 说明精细在手操作必须依赖高自由度仿人手，三指机构无法完成。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "VTAP 用三指 13 DOF 加主动手掌完成注射器重定向、推活塞、3 mm 物体分拣，说明手指-手掌协同可以替代部分仿人手自由度。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "VTAP",
+      "三指",
+      "灵巧操作"
+    ]
+  },
+  {
+    "id": "FRONT-140",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · GelSphere 方向",
+    "type": "concept",
+    "difficulty": "easy",
+    "question": "判断：GelSphere 和柱状触觉传感器一样，只能沿固定方向滚动。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "GelSphere 通过钢球轴承层实现全向滚动，可以绕任意轴滚动并在线拼接大表面。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "GelSphere",
+      "全向滚动",
+      "触觉"
+    ]
+  },
+  {
+    "id": "FRONT-141",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · Shallow-π 范围",
+    "type": "concept",
+    "difficulty": "medium",
+    "question": "判断：Shallow-π 只压缩 VLM 骨干，不压缩 flow-based 动作头。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "Shallow-π 同时压缩 VLM 骨干和动作头，18→6 层；只压骨干无法获得它报告的加速和成功率表现。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "Shallow-π",
+      "动作头",
+      "蒸馏"
+    ]
+  },
+  {
+    "id": "FRONT-142",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · SteadyTray 残差",
+    "type": "concept",
+    "difficulty": "medium",
+    "question": "判断：ReST-RL 的残差模块替代了基础行走策略，部署时不再需要基础策略。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "基础行走策略被冻结并保留，残差模块只输出修正；最终动作是基础动作加残差，解耦正是它稳定的原因。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "SteadyTray",
+      "残差",
+      "人形"
+    ]
+  },
+  {
+    "id": "FRONT-143",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · DAWN 部署滤波",
+    "type": "concept",
+    "difficulty": "hard",
+    "question": "判断：DAWN 的主要贡献是在部署时加入手工调参的深度滤波器。",
+    "options": null,
+    "correct_answer": "false",
+    "explanation": "DAWN 把去噪写进世界模型训练目标，部署时不做额外滤波、不增加推理开销；这正是它相对于手工滤波的价值。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "DAWN",
+      "去噪",
+      "部署"
+    ]
+  },
+  {
+    "id": "FRONT-144",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 接触回环",
+    "type": "concept",
+    "difficulty": "easy",
+    "question": "判断：在水下感知退化场景里，物理接触事件可以作为隐式回环，减少对视觉地点识别的依赖。",
+    "options": null,
+    "correct_answer": "true",
+    "explanation": "Contact-Aided 工作把接触事件建成高置信因子，接触已知物体即说明载体在附近，因此可以形成不依赖外观的回环约束。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "水下",
+      "接触",
+      "回环"
+    ]
+  },
+  {
+    "id": "FRONT-145",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 最佳论文名称",
+    "type": "fill_in_blank",
+    "difficulty": "easy",
+    "question": "IROS 2026 最佳论文授予了长期场景记忆框架 ____。",
+    "options": null,
+    "correct_answer": "LT-Mem",
+    "explanation": "LT-Mem 来自韩国 DGIST，用易变性感知的时空记忆解决跨会话物体身份与变化历史问题。",
+    "source": "memory/lerobot-learning/补充-47-IROS2026具身智能全景与获奖论文.md",
+    "tags": [
+      "IROS",
+      "最佳论文",
+      "LT-Mem"
+    ]
+  },
+  {
+    "id": "FRONT-146",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 第三段记忆",
+    "type": "fill_in_blank",
+    "difficulty": "easy",
+    "question": "LT-Mem 的 Tri-Memory 包括 Live、Delta 和 ____。",
+    "options": null,
+    "correct_answer": "Meta",
+    "explanation": "Live 存当前状态，Delta 存变化事件，Meta 存变化频率等统计；三者共同支持纵向推理。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "LT-Mem",
+      "Tri-Memory",
+      "Meta"
+    ]
+  },
+  {
+    "id": "FRONT-147",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 高斯基元",
+    "type": "fill_in_blank",
+    "difficulty": "easy",
+    "question": "GaussMemory 用 3D ____ Splatting 作为持久几何底座。",
+    "options": null,
+    "correct_answer": "Gaussian",
+    "explanation": "3D Gaussian Splatting 用一组高斯基元表示场景，适合持续更新和新视角读取。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "GaussMemory",
+      "3DGS",
+      "几何表示"
+    ]
+  },
+  {
+    "id": "FRONT-148",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 手掌行程",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "VTAP 的主动手掌线性 actuator 行程是 ____ mm。",
+    "options": null,
+    "correct_answer": "50",
+    "explanation": "50 mm 行程让手掌可以推动注射器活塞、辅助旋转和重新分配接触点。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "VTAP",
+      "手掌",
+      "参数"
+    ]
+  },
+  {
+    "id": "FRONT-149",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 压缩层数",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "Shallow-π 把 VLM 骨干和动作头的 Transformer 深度从 18 层压到 ____ 层。",
+    "options": null,
+    "correct_answer": "6",
+    "explanation": "18→6 层，配合动作生成蒸馏和动作相关注意力蒸馏，实现 2 倍以上加速且成功率绝对下降小于 1%。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "Shallow-π",
+      "层数",
+      "蒸馏"
+    ]
+  },
+  {
+    "id": "FRONT-150",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 基础策略状态",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "ReST-RL 训练时保持基础行走策略 ____，只训练残差模块。",
+    "options": null,
+    "correct_answer": "冻结",
+    "explanation": "冻结基础策略可以保留已经学好的步态稳定性，残差模块只需学习如何抵消载荷引起的末端扰动。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "SteadyTray",
+      "冻结",
+      "残差"
+    ]
+  },
+  {
+    "id": "FRONT-151",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · RSSM 全称",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "DAWN 在 ____（缩写 RSSM）世界模型架构上做去噪改造。",
+    "options": null,
+    "correct_answer": "Recurrent State-Space Model",
+    "explanation": "RSSM 是循环状态空间模型；DAWN 让编码器输入带噪深度、解码器重建干净深度，并用对比对齐稳定潜空间。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "DAWN",
+      "RSSM",
+      "世界模型"
+    ]
+  },
+  {
+    "id": "FRONT-152",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 动作执行器",
+    "type": "fill_in_blank",
+    "difficulty": "medium",
+    "question": "Ask-to-Clarify 用 VLM 做认知规划器，用 Diffusion-based ____ Executor 生成低层动作。",
+    "options": null,
+    "correct_answer": "Motor",
+    "explanation": "Cognitive Planner 负责识别歧义和多轮对话，Motor Executor 负责把明确后的语义意图变成动作；中间用语义-视觉对齐适配器连接。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "Ask-to-Clarify",
+      "扩散策略",
+      "执行器"
+    ]
+  },
+  {
+    "id": "FRONT-153",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 时间性失忆",
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "解释 LT-Mem 所说的 temporal amnesia，并说明它如何用 Tri-Memory 缓解。",
+    "options": null,
+    "correct_answer": "temporal amnesia 指系统系统性地丢失物体历史：覆盖式地图只保留最新状态，语义快照缺少跨会话身份，导致无法回答“这个杯子去过哪里、什么时候被移动”。LT-Mem 用多会话 SLAM 对齐观测，用确定性证据打分维持跨会话身份，再按物体易变性选择覆盖、保留或多假设；Tri-Memory 的 Live 存当前状态，Delta 存变化事件，Meta 存变化统计，从而同时保留现在和历史。",
+    "explanation": "按“问题定义→身份→更新策略→三段记忆”四层答，注意强调身份是地基。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "LT-Mem",
+      "时间性失忆",
+      "记忆"
+    ]
+  },
+  {
+    "id": "FRONT-154",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 手掌协同",
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "VTAP 为什么把手掌做成主动、可感知的接触面？举例说明手指-手掌如何分工。",
+    "options": null,
+    "correct_answer": "传统夹爪的手掌只是固定底座，接触和感知都靠手指，限制了在手操作。VTAP 给手掌加 1 个线性自由度、50 mm 行程和视觉-触觉双模感知，使手掌可以主动推、转、重新分配接触。以注射器为例：手指夹住管身并调整方向，手掌推动活塞；手指维持夹持，手掌完成需要另一个接触面的动作。这样三指 13 DOF 就能覆盖部分原本需要更高自由度仿人手的任务。",
+    "explanation": "先讲传统局限，再讲 VTAP 的手掌设计，最后用注射器例子说明分工。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "VTAP",
+      "手掌",
+      "灵巧操作"
+    ]
+  },
+  {
+    "id": "FRONT-155",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 深度蒸馏",
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "Shallow-π 如何把 flow-based VLA 从 18 层压到 6 层，为什么这样压还能保持成功率？",
+    "options": null,
+    "correct_answer": "它同时压缩 VLM 骨干和 flow 动作头，而不是只压骨干；蒸馏包含动作生成过程蒸馏和动作相关注意力蒸馏，只对齐与动作生成有关的注意力关系，避免把无关容量和噪声学进来。压缩后推理更快，机器人能用更新的观测做闭环，减少执行旧 chunk 的偏差，所以在动态任务里成功率不一定下降，甚至可能更高；但这不是小模型普遍更强，静态任务里大模型仍可能更稳。",
+    "explanation": "答出“双端压缩、动作相关蒸馏、延迟收益”三点即可。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "Shallow-π",
+      "知识蒸馏",
+      "延迟"
+    ]
+  },
+  {
+    "id": "FRONT-156",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 载荷稳定",
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "SteadyTray 的 ReST-RL 为什么能让人形端稳托盘，同时不破坏行走稳定性？",
+    "options": null,
+    "correct_answer": "它把问题拆成两层：基础行走策略已经在大规模数据上学会稳定步态，训练时冻结；残差模块只根据机器人和载荷状态输出修正动作，专门抵消每一步传到末端的振动。最终动作是基础动作加残差，因此不会把行走能力一起带崩。残差有两种实现，Action Adapter 直接出动作残差，FiLM Adapter 调制基础策略特征；部署前只蒸馏 encoder，adapter 冻结，避免依赖特权信息。",
+    "explanation": "关键词：解耦、冻结基础策略、残差补偿、特权蒸馏。",
+    "source": "memory/lerobot-learning/补充-49-IROS2026精读-人形VLA与交互.md",
+    "tags": [
+      "SteadyTray",
+      "残差RL",
+      "载荷"
+    ]
+  },
+  {
+    "id": "FRONT-157",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 声呐去噪迁移",
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "如果把 DAWN 的“带噪输入、干净重建”思路迁移到水下声呐，需要改什么？最大的风险是什么？",
+    "options": null,
+    "correct_answer": "需要改三点：第一，噪声模型不同，声呐有混响、多径、旁瓣、运动模糊，不能直接套深度噪声；第二，干净目标难获得，可以用仿真干净声呐、多视平均或占用栅格作为监督；第三，评价要接到下游导航/避障任务，而不是只看重建 PSNR。最大风险是“干净目标”本身有偏，或者声呐噪声非高斯、非平稳，导致对比对齐学到的只是仿真伪影；因此必须在水池和真实浑浊度变化下验证。",
+    "explanation": "按“噪声差异→监督来源→下游评价→风险”四段答。",
+    "source": "memory/lerobot-learning/补充-50-IROS2026发散思考-选题与水下迁移.md",
+    "tags": [
+      "DAWN",
+      "声呐",
+      "水下",
+      "迁移"
+    ]
+  },
+  {
+    "id": "FRONT-158",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 水下接触定位",
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "Contact-Aided Factor-Graph Localization 如何把接触变成定位约束？这对水下具身智能意味着什么？",
+    "options": null,
+    "correct_answer": "它把抽吸机械臂的接触事件建成因子图中的高置信因子；接触已知物体意味着载体就在该物体附近，因此等效于不依赖视觉地点识别的隐式回环。视觉里程计和地标观测按内点统计做不确定性缩放，避免退化帧污染估计；系统支持运动中在线初始化。对水下具身智能的意义是：在感知退化环境里，物理交互本身就是一种定位原语，接触、抓取、采样都可以反过来帮助状态估计，而不只是消耗定位结果。",
+    "explanation": "答出“接触因子、隐式回环、不确定性缩放、交互即定位”四点。",
+    "source": "memory/lerobot-learning/补充-48-IROS2026精读-长期记忆与触觉.md",
+    "tags": [
+      "水下",
+      "因子图",
+      "接触",
+      "状态估计"
+    ]
+  },
+  {
+    "id": "FRONT-159",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 趋势综合",
+    "type": "written",
+    "difficulty": "hard",
+    "question": "结合 IROS 2026 的获奖与 finalist 工作，论述具身智能当前最值得关注的三个趋势，并用具体论文和数字支撑。",
+    "options": null,
+    "correct_answer": "趋势一：长期记忆成为一等公民。LT-Mem 用 Tri-Memory 和易变性策略解决跨会话物体身份与变化历史，完整系统 F1 0.910，去掉跨会话重识别掉到 0.140；GaussMemory 用 3DGS 做任务驱动的主动记忆，在 VLABench 上比 π0-FAST 高 5.2%/6.0%。趋势二：接触与触觉从辅助变成操作和定位的信息源。VTAP 用三指 13 DOF 加主动手掌完成注射器操作，抓取 93.3%；GelSphere 用钢球轴承实现全向滚动触觉扫描；Contact-Aided 把接触事件做成隐式回环，在无纹理海底降低漂移。趋势三：真机可靠性成为评价核心。Shallow-π 把 VLA 从 18 层压到 6 层，2 倍以上加速、成功率绝对下降小于 1%；SteadyTray 用冻结基础行走加残差稳定，变速跟踪 96.9%；DAWN 用带噪输入/干净重建让 Go1 零样本跑 18 cm 台阶、70 cm 间隙。三个趋势共同指向：从“能演示”走向“能长期、能接触、能实时、能恢复”。",
+    "explanation": "三个趋势各用 1–2 篇论文和数字支撑，最后给出统一判断；不要只罗列论文。",
+    "source": "memory/lerobot-learning/补充-47-IROS2026具身智能全景与获奖论文.md",
+    "tags": [
+      "IROS",
+      "趋势",
+      "具身智能",
+      "综述"
+    ]
+  },
+  {
+    "id": "FRONT-160",
+    "domain": "前沿追踪（2025-2026）",
+    "topic": "IROS 2026 · 水下选题设计",
+    "type": "written",
+    "difficulty": "hard",
+    "question": "以 IROS 2026 的记忆、触觉、接触定位和人形控制为灵感，设计一个水下具身智能研究方案：给出问题、假设、方法、实验、风险和最小可行实验。",
+    "options": null,
+    "correct_answer": "问题：AUV 在低能见度、无纹理海底重复巡检时，视觉退化导致跨会话目标认不出、轨迹漂移，接触采样又无法反哺定位。假设：把物体级长期记忆、接触因子和轻量 VLA 结合，可以在感知退化下维持跨会话身份并降低漂移。方法：多会话 SLAM 融合视觉/声呐/DVL/IMU；用 LT-Mem 式 Tri-Memory 存当前地图、采样事件和区域稳定性；把机械臂接触建模成因子图高置信约束；策略侧用 Shallow-π 式蒸馏把多模态 VLA 压到 Jetson 级。实验：仿真用 HoloOcean/Stone Soup 设置浑浊度和光照变化；水池放 5 个已知物体分 5 次下潜，测身份保持率、轨迹漂移、重复访问精度；对比无记忆/无接触/完整系统。风险：声呐分辨率不足、接触事件稀疏、水下数据少导致蒸馏过拟合。最小可行实验：水池中 5 个物体、5 次下潜、3 个接触点，验证身份保持率和漂移是否显著优于基线。",
+    "explanation": "按“问题→假设→方法→实验→风险→最小实验”六段写；方法要明确对应 IROS 2026 的哪篇工作。",
+    "source": "memory/lerobot-learning/补充-50-IROS2026发散思考-选题与水下迁移.md",
+    "tags": [
+      "水下",
+      "选题",
+      "具身智能",
+      "研究设计"
+    ]
   }
 ]

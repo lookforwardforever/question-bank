@@ -2,13 +2,13 @@
 
 # 项目题库 · Embodied AI Question Bank
 
-**一套可以离线跑十年的具身智能题库：1960 道题、14 个领域、236 份来源、零后端、零依赖。**
+**一套可以离线跑十年的具身智能题库：2000 道题、14 个领域、240 份来源、零后端、零依赖。**
 
 从 VLA 模型族谱到全身控制，从世界模型到水下机器人，从数据工程到边缘部署——练题、背诵、错题、考试、统计，一个 HTML 全部搞定。
 
-[![Questions](https://img.shields.io/badge/questions-1960-2563eb)](#题库全景)
+[![Questions](https://img.shields.io/badge/questions-2000-2563eb)](#题库全景)
 [![Domains](https://img.shields.io/badge/domains-14-0ea5e9)](#题库全景)
-[![Sources](https://img.shields.io/badge/sources-236-10b981)](#题库全景)
+[![Sources](https://img.shields.io/badge/sources-240-10b981)](#题库全景)
 [![Offline](https://img.shields.io/badge/runtime-100%25%20offline-8b5cf6)](#技术架构)
 [![Android](https://img.shields.io/badge/Android-API%2026%2B-3ddc84)](APK/README.md)
 
@@ -41,10 +41,10 @@
 
 ## 亮点
 
-- **1960 道题，全部带答案、解析、出处**：不是只有 ABCD，每题都有 `explanation`，多数还有 `pitfall` 易错点。
-- **14 个领域，12 个 ID 前缀**：从 `VLA-001` 到 `FRONT-120`，每个领域独立编号，方便按块复习。
+- **2000 道题，全部带答案、解析、出处**：不是只有 ABCD，每题都有 `explanation`，多数还有 `pitfall` 易错点。
+- **14 个领域，12 个 ID 前缀**：从 `VLA-001` 到 `FRONT-160`，每个领域独立编号，方便按块复习。
 - **5 种题型**：选择题、判断题、填空题、简答题、论述题，覆盖识记、辨析、推导和系统设计。
-- **236 份来源**：每道题的 `source` 指向具体讲义、论文或官方文档，可回溯、可核对。
+- **240 份来源**：每道题的 `source` 指向具体讲义、论文或官方文档，可回溯、可核对。
 - **7 种使用模式**：练习、模拟考试、错题本、收藏夹、垃圾箱、背诵、统计。
 - **答对自动跳题**：选择题/判断题/填空题答对后 0.8 秒进入下一题，答错停留看解析。
 - **软删除**：任何模式下都能把题放进垃圾箱，不永久删除，也不再出现在练习和考试里。
@@ -110,7 +110,7 @@ node serve.cjs
 | 9 | 推理部署与边缘计算 | 140 | `DEPLOY` | TensorRT、vLLM、量化、KV cache、FlashRT、Jetson |
 | 10 | Agent 与中间件 | 120 | `AGENT` | MCP、DDS、ROS2、dsh、子代理、沙箱、QoS |
 | 11 | 数学与控制理论 | 100 | `CTRL` | 李群、SVD、卡尔曼、LQR、频域、滑模、凸优化 |
-| 12 | 前沿追踪（2025-2026） | 70 | `FRONT` | MorphMimic、SONIC、ZEST、AstraBrain、WAM、Helix |
+| 12 | 前沿追踪（2025-2026） | 110 | `FRONT` | MorphMimic、SONIC、ZEST、AstraBrain、WAM、Helix、IROS 2026 |
 | 13 | 前沿追踪与行业视野 | 50 | `FRONT` | 3DGS、世界模型落地、人形竞速、开源格局、选型 |
 | 14 | 控制算法 | 20 | `CTRL` | PID、MPC、WBC、iLQR、KKT、casadi、crocoddyl |
 
@@ -118,23 +118,23 @@ node serve.cjs
 
 | 题型 | 数量 | 考查方式 |
 |---|---:|---|
-| 选择题 `choice` | 794 | 概念边界、方案选型、参数与架构辨析 |
-| 填空题 `fill_in_blank` | 398 | 术语、公式、模块名、关键数字 |
-| 判断题 `concept` | 388 | 常见误解、边界条件、概念混淆 |
-| 简答题 `short_answer` | 279 | 用自己的话解释机制、流程与取舍 |
-| 论述题 `written` | 101 | 系统设计、完整数据流、方案对比与推导 |
+| 选择题 `choice` | 810 | 概念边界、方案选型、参数与架构辨析 |
+| 填空题 `fill_in_blank` | 406 | 术语、公式、模块名、关键数字 |
+| 判断题 `concept` | 396 | 常见误解、边界条件、概念混淆 |
+| 简答题 `short_answer` | 285 | 用自己的话解释机制、流程与取舍 |
+| 论述题 `written` | 103 | 系统设计、完整数据流、方案对比与推导 |
 
 | 难度 | 数量 | 占比 |
 |---|---:|---:|
-| 简单 `easy` | 438 | 22.3% |
-| 中等 `medium` | 1039 | 53.0% |
-| 困难 `hard` | 483 | 24.6% |
+| 简单 `easy` | 450 | 22.5% |
+| 中等 `medium` | 1059 | 53.0% |
+| 困难 `hard` | 491 | 24.6% |
 
 ### 质量数据
 
-- **236** 份唯一来源，全部记录在每题的 `source` 字段
-- **1876** 个去重技术标签，可作为细粒度检索入口
-- 选择题答案分布：A 200 / B 199 / C 197 / D 198，基本均衡
+- **240** 份唯一来源，全部记录在每题的 `source` 字段
+- **1924** 个去重技术标签，可作为细粒度检索入口
+- 选择题答案分布：A 204 / B 203 / C 201 / D 202，基本均衡
 - 构建时强制校验：ID 唯一、topic 唯一、题干不重复、选择题恰好 ABCD、判断题 true/false、填空题恰好一个 `____`
 - 全部题目为本地编写/整理，不含爬取的付费题库内容
 
@@ -245,7 +245,7 @@ VLA 是把视觉、语言、动作放进一个模型、直接由图像和指令�
 ```mermaid
 flowchart LR
     subgraph SRC["题库真源"]
-        J["data/questions.jsonl<br/>1960 行 · 一行一题"]
+        J["data/questions.jsonl<br/>2000 行 · 一行一题"]
     end
 
     subgraph BUILD["离线构建 · Node 标准库"]
@@ -543,7 +543,7 @@ Copy-Item data\questions.js APK\app\src\main\assets\data\questions.js -Force
 
 - 19 章、975 行，按 `大类.子类.关键词` 编号
 - 从 `1 具身智能总论` 到 `15 前沿追踪与评测`
-- 覆盖 1876 个去重标签，包含 π 系、GR00T 系、RDT、ACT、WBC、MPC、水下、部署、Agent 等完整分支
+- 覆盖 1924 个去重标签，包含 π 系、GR00T 系、RDT、ACT、WBC、MPC、水下、部署、Agent 等完整分支
 - 第 16 章是按字母排序的实体速查表
 - 第 17 章是跨分支关系网，第 18 章把编号映射回题库领域
 
@@ -606,12 +606,13 @@ Copy-Item data\questions.js APK\app\src\main\assets\data\questions.js -Force
 
 ## 路线图
 
-- [x] 1960 题全库收官，236 份来源可回溯
+- [x] 2000 题全库收官，240 份来源可回溯
 - [x] 练习 / 考试 / 背诵 / 错题 / 收藏 / 垃圾箱 / 统计
 - [x] 本地服务持久化 + JSON 导入导出
 - [x] Android APK（API 26–37，SAF 导入导出）
 - [x] 关键词知识地图（19 章）
 - [x] 2026-11 水下具身新批次：U0 / MarineGym / UTracker / BlueROV2 Gym / FCRN+DDDQN 六项目 40 题
+- [x] IROS 2026 具身智能专题：长期记忆、触觉、VLA 压缩、人形运控、交互与水下接触定位 40 题
 - [ ] 错题导出 CSV / Anki
 - [ ] 题目全文检索性能优化（大题库分片）
 - [ ] 多设备进度同步（保持无账号、可选自托管）
@@ -621,6 +622,15 @@ Copy-Item data\questions.js APK\app\src\main\assets\data\questions.js -Force
 ---
 
 ## 更新日志
+
+### 2026-11-18 · IROS 2026 具身智能专题
+
+- 新增 40 题（`FRONT-121`–`FRONT-160`），前沿追踪域从 70 题增至 110 题
+- 新增 4 份讲义：IROS 2026 全景与获奖论文、长期记忆与触觉精读、人形/VLA 与交互精读、发散思考与水下选题
+- 覆盖 LT-Mem、GaussMemory、VTAP、GelSphere、Shallow-π、SteadyTray、DAWN、LATENT、Ask-to-Clarify、Contact-Aided 水下定位，以及 MIWA/DeLM/ULTRA/PGFlowNav
+- 题库总数 1960 → 2000，来源 236 → 240，标签 1876 → 1924
+- 只追加到文件末尾，旧题 ID 与顺序不变；`index.html` 不改，已有练习进度不受影响
+- APK 仍停留在 1.0.0（1920 题），不随本次更新
 
 ### 2026-11-17 · 水下具身智能新批次
 

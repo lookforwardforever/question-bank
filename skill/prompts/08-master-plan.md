@@ -29,11 +29,11 @@
 | U7 | 灵巧手与操作 | 160 | 160 | 0 | 手自由度/重定向、BiDexHand/UniDex/GenDexGrasp/DexMimicGen、触觉（TacClaw/TouchWorld/MoDE-VLA/TeleDexter）、抓取规划 |
 | U8 | 数据工程与数据集 | 140 | 140 | 0 | LeRobot/RLDS/HDF5、DROID/OXE/AgiBot/RoboMIND/BEHAVIOR、采集/标注/增强/回流、数据飞轮 |
 | U9 | 推理部署与边缘计算 | 140 | 140 | 0 | 量化/蒸馏/剪枝、TRT/vLLM/FlashRT/SGLang、CUDA Graph、KV cache、RTC、Jetson、ROS2/DDS |
-| U10 | 水下机器人（主场） | 160 | 160 | 0 | Fossen、附加质量、声呐/光学、DVL/USBL/SLAM、ArduSub/BlueROV/DAVE/Stonefish、水下 VLA、推进器分配 |
+| U10 | 水下机器人（主场） | 200 | 200 | 0 | Fossen、附加质量、声呐/光学、DVL/USBL/SLAM、ArduSub/BlueROV/DAVE/Stonefish、水下 VLA、推进器分配、IROS 2026 接触定位 |
 | U11 | Agent/中间件/SDK/系统 | 120 | 120 | 0 | Agent 架构（dsh/openmanus）、MCP/工具调用、宇树 SDK2、CycloneDDS、Zephyr、Kalibr、TensorRT-LLM |
-| U12 | 前沿追踪与行业视野 | 120 | 120 | 0 | 2025–2026 新论文、mimic 家族、WAM 世界-动作模型、形态自适应、行业趋势/开源生态/求职技术视野 |
+| U12 | 前沿追踪与行业视野 | 160 | 160 | 0 | 2025–2026 新论文、IROS 2026 专题、mimic 家族、WAM 世界-动作模型、形态自适应、行业趋势/开源生态/求职技术视野 |
 | — | 项目精读补全（391 份） | 0 | 500 | 500 | 每份 1–2 题，按上面单元归类，不单独编号 |
-| | **合计** | **1920** | **约 2420** | **约 500** | |
+| | **合计** | **2000** | **约 2420** | **约 420** | |
 
 ## 三、ID 前缀与单元对应
 
