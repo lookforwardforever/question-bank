@@ -643,7 +643,7 @@ Copy-Item data\questions.js APK\app\src\main\assets\data\questions.js -Force
 
 - **代码**：可自由学习、修改、分发；转载或二次开发请保留出处链接。
 - **题目与解析**：基于公开论文、官方文档和开源项目整理，版权归原作者；`source` 字段保留出处。如有侵权，请联系删除。
-- **致谢**：感谢 LeRobot、MuJoCo、IsaacLab、Open X-Embodiment、DROID、RoboMIND、π 系、GR00T、RDT、ACT、Diffusion Policy 等开源项目与论文作者，以及 `memory/lerobot-learning` 讲义库提供的知识基础。
+- **致谢**：感谢 LeRobot、MuJoCo、IsaacLab、Open X-Embodiment、DROID、RoboMIND、π 系、GR00T、RDT、ACT、Diffusion Policy 等开源项目与论文作者；感谢香港大学 DeepTutor（[HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)）项目提供的提示词设计参考，本仓库 `skill/prompts/` 的出题与复核流程受其启发。
 
 ---
 
